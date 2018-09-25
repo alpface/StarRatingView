@@ -16,12 +16,18 @@
 
 @interface CWStarRateView : UIView
 
-@property (nonatomic, assign) CGFloat scorePercent;//得分值，范围为0--1，默认为1
-@property (nonatomic, assign) BOOL hasAnimation;//是否允许动画，默认为NO
-@property (nonatomic, assign) BOOL allowIncompleteStar;//评分时是否允许不是整星，默认为NO
+/// 得分值，范围为0--1，默认为1
+@property (nonatomic, assign) CGFloat scorePercent;
+/// 评分时是否允许不是整星，默认为NO
+@property (nonatomic, assign) BOOL allowIncompleteStar;
+/// 是否允许点击评分进行评分, 默认为NO
+@property (nonatomic, assign) BOOL allowTap;
 
 @property (nonatomic, weak) id<CWStarRateViewDelegate>delegate;
 
-- (instancetype)initWithFrame:(CGRect)frame numberOfStars:(NSInteger)numberOfStars;
+- (instancetype)initWithNumberOfStars:(NSInteger)numberOfStars NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
+
+- (void)setScorePercent:(CGFloat)scroePercent animated:(BOOL)animated;
 
 @end

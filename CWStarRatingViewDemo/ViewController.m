@@ -21,11 +21,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.starRateView = [[CWStarRateView alloc] initWithFrame:CGRectMake(10, 100, 300, 40) numberOfStars:5];
+    self.starRateView = [[CWStarRateView alloc] initWithNumberOfStars:5];
     self.starRateView.scorePercent = 0.3;
     self.starRateView.allowIncompleteStar = YES;
-    self.starRateView.hasAnimation = YES;
     [self.view addSubview:self.starRateView];
+    self.starRateView.translatesAutoresizingMaskIntoConstraints = false;
+    [NSLayoutConstraint constraintWithItem:self.starRateView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0].active = YES;
+    [NSLayoutConstraint constraintWithItem:self.starRateView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0.0].active = YES;
+    [NSLayoutConstraint constraintWithItem:self.starRateView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeWidth multiplier:0.3 constant:0.0].active = YES;
+    [NSLayoutConstraint constraintWithItem:self.starRateView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:20.0].active = YES;
+    
 }
 
 @end
